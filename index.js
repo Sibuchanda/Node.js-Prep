@@ -42,6 +42,12 @@ app.get('/login', async (req,res)=>{
     if(!user) return res.status(401).send("Invalid credentials")
     res.status(200).json({name: user.name, email: user.email});
 });
+// Demo route
+app.get('/demo', async (req,res)=>{
+    const user = await User.findOne({email: req.body.email});
+    if(!user) return res.status(401).send("Invalid credentials")
+    res.status(200).json({name: user.name, email: user.email});
+});
 
 
 app.listen(PORT,()=>{
